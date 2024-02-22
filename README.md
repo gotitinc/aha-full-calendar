@@ -2,8 +2,8 @@
 
 An events calendar component built for React and designed for modern browsers (read: not IE) and uses flexbox over the classic tables-caption approach.
 
-Cloned from [react-big-calendar](https://jquense.github.io/react-big-calendar/examples/index.html)
-Inspired by [Full Calendar](http://fullcalendar.io/).
+- Cloned from [react-big-calendar](https://jquense.github.io/react-big-calendar/examples/index.html)
+- Inspired by [Full Calendar](http://fullcalendar.io/).
 
 ## Use and Setup
 
