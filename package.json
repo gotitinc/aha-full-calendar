@@ -8,7 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "lib/index.js",
   "module": "dist/aha-full-calendar.esm.js",
   "style": "lib/css/aha-full-calendar.css",
