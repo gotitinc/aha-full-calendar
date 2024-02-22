@@ -135,3 +135,7 @@ const MyCalendar = (props) => (
   </div>
 );
 ```
+
+## License
+
+AhaUI is licensed under the [Apache-2.0 License](https://github.com/gotitinc/ahaui/blob/main/LICENSE), sponsored and supported by [Got It, Inc.](https://www.got-it.co).
