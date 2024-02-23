@@ -31,35 +31,33 @@ function Agenda({
   //   _adjustHeader();
   // });
 
-  // const renderDay = (day, events, dayKey) => {
-  //   const { event: Event, date: AgendaDate } = components;
+  const renderDay = (day, events, dayKey) => {
+    const { event: Event, date: AgendaDate } = components;
 
-  //   events = events.filter((e) =>
-  //     inRange(e, localizer.startOf(day, 'day'), localizer.endOf(day, 'day'), accessors, localizer)
-  //   );
+    events = events.filter((e) =>
+      inRange(e, localizer.startOf(day, 'day'), localizer.endOf(day, 'day'), accessors, localizer)
+    );
 
-  //   return events.map((event, idx) => {
-  //     let title = accessors.title(event);
-  //     let end = accessors.end(event);
-  //     let start = accessors.start(event);
+    return events.map((event, idx) => {
+      let title = accessors.title(event);
+      let end = accessors.end(event);
+      let start = accessors.start(event);
 
-  //     const userProps = getters.eventProp(event, start, end, isSelected(event, selected));
+      const userProps = getters.eventProp(event, start, end, isSelected(event, selected));
 
-  //     let dateLabel = idx === 0 && localizer.format(day, 'agendaDateFormat');
-
-  //     return (
-  //       <tr key={dayKey + '_' + idx} className={userProps.className} style={userProps.style}>
-  //         <td
-  //           className="rbc-agenda-event-cell"
-  //           onClick={(e) => onSelectEvent && onSelectEvent(event, e)}
-  //           onDoubleClick={(e) => onDoubleClickEvent && onDoubleClickEvent(event, e)}
-  //         >
-  //           {Event ? <Event event={event} title={title} /> : title}
-  //         </td>
-  //       </tr>
-  //     );
-  //   }, []);
-  // };
+      return (
+        <tr key={dayKey + '_' + idx} className={userProps.className} style={userProps.style}>
+          <td
+            className="rbc-agenda-event-cell"
+            onClick={(e) => onSelectEvent && onSelectEvent(event, e)}
+            onDoubleClick={(e) => onDoubleClickEvent && onDoubleClickEvent(event, e)}
+          >
+            {Event ? <Event event={event} title={title} /> : title}
+          </td>
+        </tr>
+      );
+    }, []);
+  };
 
   // const timeRangeLabel = (day, event) => {
   //   let labelClass = '',
@@ -141,11 +139,11 @@ function Agenda({
               </tr>
             </thead>
           </table>
-          {/* <div className="rbc-agenda-content" ref={contentRef}>
+          <div className="rbc-agenda-content" ref={contentRef}>
             <table className="rbc-agenda-table">
               <tbody ref={tbodyRef}>{range.map((day, idx) => renderDay(day, events, idx))}</tbody>
             </table>
-          </div> */}
+          </div>
         </React.Fragment>
       ) : (
         <span className="rbc-agenda-empty">{messages.noEventsInRange}</span>
