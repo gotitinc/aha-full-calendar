@@ -27,97 +27,97 @@ function Agenda({
   const contentRef = useRef(null);
   const tbodyRef = useRef(null);
 
-  useEffect(() => {
-    _adjustHeader();
-  });
+  // useEffect(() => {
+  //   _adjustHeader();
+  // });
 
-  const renderDay = (day, events, dayKey) => {
-    const { event: Event, date: AgendaDate } = components;
+  // const renderDay = (day, events, dayKey) => {
+  //   const { event: Event, date: AgendaDate } = components;
 
-    events = events.filter((e) =>
-      inRange(e, localizer.startOf(day, 'day'), localizer.endOf(day, 'day'), accessors, localizer)
-    );
+  //   events = events.filter((e) =>
+  //     inRange(e, localizer.startOf(day, 'day'), localizer.endOf(day, 'day'), accessors, localizer)
+  //   );
 
-    return events.map((event, idx) => {
-      let title = accessors.title(event);
-      let end = accessors.end(event);
-      let start = accessors.start(event);
+  //   return events.map((event, idx) => {
+  //     let title = accessors.title(event);
+  //     let end = accessors.end(event);
+  //     let start = accessors.start(event);
 
-      const userProps = getters.eventProp(event, start, end, isSelected(event, selected));
+  //     const userProps = getters.eventProp(event, start, end, isSelected(event, selected));
 
-      let dateLabel = idx === 0 && localizer.format(day, 'agendaDateFormat');
+  //     let dateLabel = idx === 0 && localizer.format(day, 'agendaDateFormat');
 
-      return (
-        <tr key={dayKey + '_' + idx} className={userProps.className} style={userProps.style}>
-          <td
-            className="rbc-agenda-event-cell"
-            onClick={(e) => onSelectEvent && onSelectEvent(event, e)}
-            onDoubleClick={(e) => onDoubleClickEvent && onDoubleClickEvent(event, e)}
-          >
-            {Event ? <Event event={event} title={title} /> : title}
-          </td>
-        </tr>
-      );
-    }, []);
-  };
+  //     return (
+  //       <tr key={dayKey + '_' + idx} className={userProps.className} style={userProps.style}>
+  //         <td
+  //           className="rbc-agenda-event-cell"
+  //           onClick={(e) => onSelectEvent && onSelectEvent(event, e)}
+  //           onDoubleClick={(e) => onDoubleClickEvent && onDoubleClickEvent(event, e)}
+  //         >
+  //           {Event ? <Event event={event} title={title} /> : title}
+  //         </td>
+  //       </tr>
+  //     );
+  //   }, []);
+  // };
 
-  const timeRangeLabel = (day, event) => {
-    let labelClass = '',
-      TimeComponent = components.time,
-      label = localizer.messages.allDay;
+  // const timeRangeLabel = (day, event) => {
+  //   let labelClass = '',
+  //     TimeComponent = components.time,
+  //     label = localizer.messages.allDay;
 
-    let end = accessors.end(event);
-    let start = accessors.start(event);
+  //   let end = accessors.end(event);
+  //   let start = accessors.start(event);
 
-    if (!accessors.allDay(event)) {
-      if (localizer.eq(start, end)) {
-        label = localizer.format(start, 'agendaTimeFormat');
-      } else if (localizer.isSameDate(start, end)) {
-        label = localizer.format({ start, end }, 'agendaTimeRangeFormat');
-      } else if (localizer.isSameDate(day, start)) {
-        label = localizer.format(start, 'agendaTimeFormat');
-      } else if (localizer.isSameDate(day, end)) {
-        label = localizer.format(end, 'agendaTimeFormat');
-      }
-    }
+  //   if (!accessors.allDay(event)) {
+  //     if (localizer.eq(start, end)) {
+  //       label = localizer.format(start, 'agendaTimeFormat');
+  //     } else if (localizer.isSameDate(start, end)) {
+  //       label = localizer.format({ start, end }, 'agendaTimeRangeFormat');
+  //     } else if (localizer.isSameDate(day, start)) {
+  //       label = localizer.format(start, 'agendaTimeFormat');
+  //     } else if (localizer.isSameDate(day, end)) {
+  //       label = localizer.format(end, 'agendaTimeFormat');
+  //     }
+  //   }
 
-    if (localizer.gt(day, start, 'day')) labelClass = 'rbc-continues-prior';
-    if (localizer.lt(day, end, 'day')) labelClass += ' rbc-continues-after';
+  //   if (localizer.gt(day, start, 'day')) labelClass = 'rbc-continues-prior';
+  //   if (localizer.lt(day, end, 'day')) labelClass += ' rbc-continues-after';
 
-    return (
-      <span className={labelClass.trim()}>
-        {TimeComponent ? <TimeComponent event={event} day={day} label={label} /> : label}
-      </span>
-    );
-  };
+  //   return (
+  //     <span className={labelClass.trim()}>
+  //       {TimeComponent ? <TimeComponent event={event} day={day} label={label} /> : label}
+  //     </span>
+  //   );
+  // };
 
-  const _adjustHeader = () => {
-    if (!tbodyRef.current) return;
+  // const _adjustHeader = () => {
+  //   if (!tbodyRef.current) return;
 
-    let header = headerRef.current;
-    let firstRow = tbodyRef.current.firstChild;
+  //   let header = headerRef.current;
+  //   let firstRow = tbodyRef.current.firstChild;
 
-    if (!firstRow) return;
+  //   if (!firstRow) return;
 
-    let isOverflowing = contentRef.current.scrollHeight > contentRef.current.clientHeight;
+  //   let isOverflowing = contentRef.current.scrollHeight > contentRef.current.clientHeight;
 
-    let _widths = [];
-    let widths = _widths;
+  //   let _widths = [];
+  //   let widths = _widths;
 
-    _widths = [getWidth(firstRow.children[0]), getWidth(firstRow.children[1])];
+  //   _widths = [getWidth(firstRow.children[0]), getWidth(firstRow.children[1])];
 
-    // if (widths[0] !== _widths[0] || widths[1] !== _widths[1] && (timeColRef.current &&)) {
-    //   dateColRef.current.style.width = _widths[0] + 'px';
-    //   timeColRef.current.style.width = _widths[1] + 'px';
-    // }
+  //   // if (widths[0] !== _widths[0] || widths[1] !== _widths[1] && (timeColRef.current &&)) {
+  //   //   dateColRef.current.style.width = _widths[0] + 'px';
+  //   //   timeColRef.current.style.width = _widths[1] + 'px';
+  //   // }
 
-    if (isOverflowing) {
-      addClass(header, 'rbc-header-overflowing');
-      header.style.marginRight = scrollbarSize() + 'px';
-    } else {
-      removeClass(header, 'rbc-header-overflowing');
-    }
-  };
+  //   if (isOverflowing) {
+  //     addClass(header, 'rbc-header-overflowing');
+  //     header.style.marginRight = scrollbarSize() + 'px';
+  //   } else {
+  //     removeClass(header, 'rbc-header-overflowing');
+  //   }
+  // };
 
   let { messages } = localizer;
   let end = localizer.add(date, length, 'day');
@@ -141,11 +141,11 @@ function Agenda({
               </tr>
             </thead>
           </table>
-          <div className="rbc-agenda-content" ref={contentRef}>
+          {/* <div className="rbc-agenda-content" ref={contentRef}>
             <table className="rbc-agenda-table">
               <tbody ref={tbodyRef}>{range.map((day, idx) => renderDay(day, events, idx))}</tbody>
             </table>
-          </div>
+          </div> */}
         </React.Fragment>
       ) : (
         <span className="rbc-agenda-empty">{messages.noEventsInRange}</span>
