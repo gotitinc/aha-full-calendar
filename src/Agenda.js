@@ -106,10 +106,10 @@ function Agenda({
 
     _widths = [getWidth(firstRow.children[0]), getWidth(firstRow.children[1])];
 
-    if (widths[0] !== _widths[0] || widths[1] !== _widths[1]) {
-      dateColRef.current.style.width = _widths[0] + 'px';
-      timeColRef.current.style.width = _widths[1] + 'px';
-    }
+    // if (widths[0] !== _widths[0] || widths[1] !== _widths[1] && (timeColRef.current &&)) {
+    //   dateColRef.current.style.width = _widths[0] + 'px';
+    //   timeColRef.current.style.width = _widths[1] + 'px';
+    // }
 
     if (isOverflowing) {
       addClass(header, 'rbc-header-overflowing');
